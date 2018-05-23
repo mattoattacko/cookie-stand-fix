@@ -52,18 +52,100 @@ var firstAndPike = {
 };
 firstAndPike.render();
 
-var pike = {
-    min: 3,
-    max: 9,
-    avg: 6.1,
-    getRandom: function(min, max) {
-        return Math.random() * (max-min) + min;
+var seaTacAirport = {
+    name: 'SeaTac Airport',
+    //creating my key value pairs inside of my object they are called properties
+    minCustPerHour: 3,
+    maxCustPerHour: 24,
+    avgCookiesSoldPerHour: 1.2,
+    randCustByHour: [],
+    cookiesSoldByHour: [],
+    totalCookies: 0,
+    //method for random customers by hour
+    calcRandCustByHour: function() {
+        for(var i = 0; i < hours.length; i++) {
+            this.randCustByHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
+            console.log(this.randCustByHour[i]);
+        }
+    }, 
+    //method for cookies sold by hour
+    calcCookiesSoldByHour: function() {
+        for(var j = 0; j < hours.length; j++) {
+            this.cookiesSoldByHour.push(Math.round(this.avgCookiesSoldPerHour * this.randCustByHour[j]));
+            console.log(this.cookiesSoldByHour[j]);
+        }
+    },
+    render: function() {
+        //getters and setters!
+        var seatacairport = document.getElementById('seatacairport');
+        var seaair = document.getElementById('seaair');
+        //calling the methods in the object literal
+        this.calcRandCustByHour();
+        this.calcCookiesSoldByHour();
+        //DOM manipulation irl!!!
+        //create a variable to be able to append an item to our list
+        //create a new h3 element
+        var h3El = document.createElement('h3');
+        //give text to the new h3 element
+        h3El.textContent = this.name;
+        seaair.appendChild(h3El);
+        for(var k = 0; k < hours.length; k++) {
+            //stepping through the hours array
+            var liEl = document.createElement('li');
+            //creating li elements with text of the hours
+            liEl.textContent = hours[k] + ': ' + this.cookiesSoldByHour[k] + ' cookies';
+            console.log(liEl);
+            seatacairport.appendChild(liEl); 
+        }
     }
-}
+};
+seaTacAirport.render();
 
-pikePlace.getRandom(pikePlace.min, pikePlace.max)
-
-//var h1El = document.createElement('h1') creates an element with js but we have not attached it to the browser yet
-//latch onto any 
-
-//look up MDN document.createElement
+var seattleCenter = {
+    name: 'Seattle Center',
+    //creating my key value pairs inside of my object they are called properties
+    minCustPerHour: 11,
+    maxCustPerHour: 38,
+    avgCookiesSoldPerHour: 3.7,
+    randCustByHour: [],
+    cookiesSoldByHour: [],
+    totalCookies: 0,
+    //method for random customers by hour
+    calcRandCustByHour: function() {
+        for(var i = 0; i < hours.length; i++) {
+            this.randCustByHour.push(Math.floor(Math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
+            console.log(this.randCustByHour[i]);
+        }
+    }, 
+    //method for cookies sold by hour
+    calcCookiesSoldByHour: function() {
+        for(var j = 0; j < hours.length; j++) {
+            this.cookiesSoldByHour.push(Math.round(this.avgCookiesSoldPerHour * this.randCustByHour[j]));
+            console.log(this.cookiesSoldByHour[j]);
+        }
+    },
+    render: function() {
+        //getters and setters!
+        var seattlecenter = document.getElementById('seattlecenter');
+        var seacenter = document.getElementById('seacenter');
+        //calling the methods in the object literal
+        this.calcRandCustByHour();
+        this.calcCookiesSoldByHour();
+        //DOM manipulation irl!!!
+        //create a variable to be able to append an item to our list
+        //create a new h3 element
+        var h3El = document.createElement('h3');
+        //give text to the new h3 element
+        h3El.textContent = this.name;
+        seacenter.appendChild(h3El);
+        for(var k = 0; k < hours.length; k++) {
+            //stepping through the hours array
+            var liEl = document.createElement('li');
+            //creating li elements with text of the hours
+            liEl.textContent = hours[k] + ': ' + this.cookiesSoldByHour[k] + ' cookies';
+            console.log(liEl);
+            seattlecenter.appendChild(liEl); 
+        }
+    }
+};
+seattleCenter.render();
