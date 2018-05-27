@@ -16,7 +16,7 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHou
 
     //these are the questions we need to solve
     this.randCustByHour = [];
-    this.avgCookiesSoldPerHour = [];
+    this.randCookiesSoldByHour = [];
     this.totalCookies = 0;
     allLocations.push(this);
     this.calcRandCustByHour = function() {
@@ -26,10 +26,12 @@ function MakeLocation(name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHou
         }
     }
 
-    this.calcCookiesSoldByHour = function() {
+    this.calcRandCookiesSoldByHour = function() {
          for(var j = 0; j < hours.length; j++) {
-            this.cookiesSoldByHour.push(Math.round(this.avgCookiesSoldPerHour * this.randCustByHour[j]));
-            console.log(this.cookiesSoldByHour[j]);
+            this.randCookiesSoldByHour.push(Math.round(this.avgCookiesSoldPerHour * this.randCustByHour[j]));
+            console.log(this.randCookiesSoldByHour[j]);
+            console.log(this.randCustByHour[j]);
+            
         }
     }
 }
