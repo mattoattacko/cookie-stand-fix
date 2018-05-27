@@ -60,11 +60,26 @@ makeStands();
 //table data
 var firstAndPikeTable = ["First and Pike", 2, 4, 6, 8, 10];
 var seatacAirportTable = ["Seatac Airport", 3, 5, 7, 9, 1];
-
+var seattleCenterTable = ["Seattle Center", ];
+var capitolHillTable = ["Capitol Hill", ];
+var alkiTable = ["Alki", ];
 //access the table element in the html
 var tableEl = document.getElementById("cookiedata");
 
-function tableRowMaker(inputArray) {
+function headerRowMaker(inputArray) {
+    //make a table row
+    var trEl = document.createElement('tr');
+    trEl.appendChild(document.createElement('td'));
+    //iterate through array
+    for (var i = 0; i < inputArray.length; i++) {
+        var tdEl = document.createElement("td"); //create
+        tdEl.textContent = inputArray[i]; //content
+        trEl.appendChild(tdEl); //add cell to the row
+    }
+    tableEl.appendChild(trEl); //add row to the table
+}
+
+MakeLocations.prototype.dataRowMaker = function(inputArray) {
     //make a table row
     var trEl = document.createElement("tr");
     //iterate through array
@@ -76,9 +91,14 @@ function tableRowMaker(inputArray) {
     tableEl.appendChild(trEl); //add row to the table
 }
 
-tableRowMaker(hours);
-// tableRowMaker(firstAndPikeTable);
-// tableRowMaker(seatacAirportTable);
+//allLocations[0].dataRowMaker();
+
+headerRowMaker(hours);
+dataRowMaker(firstAndPikeTable);
+dataRowMaker(seatacAirportTable);
+dataRowMaker(seattleCenterTable);
+dataRowMaker(capitolHillTable);
+dataRowMaker(alkiTable);
 //consider a for loop for the hours
 //create a th element
 //give the th element some text content like hours [i];
@@ -91,17 +111,3 @@ tableRowMaker(hours);
 //remember to call makeHeaderRow();
 
 //remember to put an "empty" <th></th> element at the top of the table to push the "6am" cell over to the right.
-
-// CookieStore.prototype.populateCustomers = function () {
-//     for (var i = 0; i < 14; i++) {
-//       this.customersPerHour.push(randomCustomers(this.minCustomers, this.maxCustomers)); //populatecustomers is pushing the array of 14 numbers up into customers per hour []
-//     }
-//    };
-   
-// CookieStore.prototype.calculateCookiesPerHour = function () {
-//     this.populateCustomers();
-//     for (var i = 0; i < hours.length; i++) {
-//       this.cookiesPerHour.push(Math.ceil(this.customersPerHour[i] * this.averageCookies));
-//       this.totalCookies = this.totalCookies + this.cookiesPerHour[i];
-//     }
-//    };
