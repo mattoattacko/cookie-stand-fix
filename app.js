@@ -47,6 +47,7 @@ function makeStands() {
     new MakeLocation('Alki', 2, 16, 4.6);
 };
 
+
 makeStands();
 
 // function makeHeaderRow() {
@@ -111,3 +112,4 @@ dataRowMaker(alkiTable);
 //remember to call makeHeaderRow();
 
 //remember to put an "empty" <th></th> element at the top of the table to push the "6am" cell over to the right.
+

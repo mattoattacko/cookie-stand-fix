@@ -1,5 +1,6 @@
 * {
     font-family: Helvetica, sans-serif;
+
     background-color: rgb(3, 10, 112);
 }
 
@@ -12,7 +13,7 @@ h2 {
     font-size: 1.1em;
 }
 
-th {
+h3  {
     color: rgb(60, 255, 0);
     font-size: 1.1em;
 }
